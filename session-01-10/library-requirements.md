@@ -38,7 +38,7 @@ Dates travel over the wire as `yyyy-MM-dd` strings.
 
 ---
 
-## Iteration 0 — Get going (Block 2)
+## Iteration 0 — Design the contract, then build it (Block 2)
 
 **Step 1.** In an empty folder, save this sheet into your repo so you can point Copilot at it:
 
@@ -46,9 +46,13 @@ Dates travel over the wire as `yyyy-MM-dd` strings.
 curl -O https://raw.githubusercontent.com/AndreRochaDev/workshop-block-coders/main/session-01-10/library-requirements.md
 ```
 
-**Step 2 — decide the architecture before you generate it.** Ask Copilot for **two** ways to structure the project, with trade-offs and a recommendation. Pick one yourself, then write that decision into `.github/copilot-instructions.md`. Copilot drafts the options; you make the call.
+**Step 2 — design the HTTP contract.** Nothing below tells you the paths, the verbs or the payloads: that's your design work. With Copilot in **Ask** mode, work out the resources, the request and response bodies, and the status code for every success and every refusal in this sheet. Disagree with at least one of its choices — it will fold immediately, which is exactly why the judgement has to be yours. Save the result as `api-contract.md` and commit it.
 
-**Step 3 — build it:**
+We put a few contracts on screen afterwards and compare them. They will differ, and that's the point.
+
+**Step 3 — decide the architecture.** Ask Copilot for **two** ways to structure the project, with trade-offs and a recommendation. Pick one yourself, then write that decision into `.github/copilot-instructions.md`.
+
+**Step 4 — build it, exactly as your contract says:**
 
 - Books: create, list, get one
 - Members: create, list, get one

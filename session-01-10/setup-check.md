@@ -4,8 +4,8 @@ Hi all,
 
 Thanks for signing up for **Unlock for Coders**, a hands-on workshop on software development with GitHub Copilot.
 
-**When:** [Date], [start time]–[end time] (4 hours, including two short breaks)
-**Where:** [Room / address]
+**When:** 01-10-2026, 9:00–13:00 (4 hours, including two short breaks)
+**Where:** Lisbon Room at Republica Office
 **Bring:** your laptop and charger
 
 ## What we'll do
@@ -68,11 +68,7 @@ Finally, check Copilot:
 
 Delete the `copilot-precheck` folder afterwards.
 
-## 3. Reply by [deadline, e.g. two days before]
+Questions: [ André Rocha, andre.almeida-rocha@axians.com ].
 
-Reply to this email with **"All green"**, or tell us which step failed and what error you saw. Don't worry if something fails: we'd much rather fix it now than during the session.
-
-Questions: [co-facilitator name, email].
-
-See you on [Date]!
-[Your name]
+See you on there!
+André Rocha

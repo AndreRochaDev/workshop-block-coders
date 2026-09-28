@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI-Assisted Development — Takeaway Card</title>
+<style>
+  :root{
+    --bg:#F6F4EE; --surface:#FCFBF7; --line:#DCD7CA; --ink:#15202B; --body:#44505C;
+    --accent:#1F7A6B; --warn:#B5523B; --code:#E9E6DD;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --bg:#121A23; --surface:#18222D; --line:#2C3B4A; --ink:#F3F1EA; --body:#B9C6CF;
+      --accent:#6FD6C1; --warn:#F2A58E; --code:#101720;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--body);font-family:var(--sans);line-height:1.45;font-size:15px}
+  .page{max-width:840px;margin:0 auto;padding:28px 16px 48px}
+  header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;
+    border-bottom:2px solid var(--accent);padding-bottom:10px;margin-bottom:18px}
+  h1{font-size:23px;margin:0;color:var(--ink)}
+  .sub{font-size:13px;color:var(--accent);font-family:var(--mono)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  section.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;break-inside:avoid}
+  section.card.wide{grid-column:1 / -1}
+  h2{font-size:13px;margin:0 0 8px;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent)}
+  ol,ul{margin:0;padding-left:18px}
+  li{margin:3px 0}
+  .steps{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+  .steps li{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:13px;color:var(--ink);font-weight:600}
+  code,pre{font-family:var(--mono);background:var(--code);border-radius:5px}
+  code{padding:1px 5px;font-size:12.5px}
+  pre{padding:10px;font-size:12px;white-space:pre-wrap;margin:6px 0 0;color:var(--ink)}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .warn{color:var(--warn);font-weight:600}
+  footer{margin-top:18px;font-size:12px;color:var(--body);opacity:.85;border-top:1px solid var(--line);padding-top:10px}
+  @media (max-width:700px){ .grid,.two-col{grid-template-columns:1fr} }
+  @media print{
+    @page{size:A4;margin:11mm}
+    body{background:#fff;color:#1a1a1a;font-size:10.2px;line-height:1.35}
+    .page{max-width:none;padding:0}
+    section.card{background:#fff;border:1px solid #bbb;padding:8px 10px;border-radius:6px}
+    h1{font-size:17px}h2{font-size:10px}
+    code,pre{background:#f1f1f1}
+    .grid{gap:8px}
+    footer{margin-top:10px}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>AI-assisted development — the working framework</h1>
+    <span class="sub">Unlock for Coders · GitHub Copilot</span>
+  </header>
+
+  <div class="grid">
+    <section class="card wide">
+      <h2>The loop you run, every task</h2>
+      <ul class="steps">
+        <li>1 · Explore</li><li>2 · Plan</li><li>3 · Execute</li><li>4 · Verify</li><li>5 · Commit</li>
+      </ul>
+      <ul style="margin-top:8px">
+        <li><b>Explore</b> (Ask): what exists already? Don't build what's there.</li>
+        <li><b>Plan</b> (Plan agent): files to change, one test per rule, what's <b>out of scope</b>. Make it ask questions before it writes anything.</li>
+        <li><b>Execute</b> (Agent): from the approved plan, in one task-sized chat.</li>
+        <li><b>Verify</b>: tests green, and you read the diff. Tests passing is not the same as correct.</li>
+        <li><b>Commit</b>: small, message drafted from the diff, signed off by you.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Prompts worth keeping</h2>
+      <p style="margin:0 0 4px"><b>Architecture:</b></p>
+      <pre>Propose TWO structures with trade-offs
+and recommend one. Don't write code yet.</pre>
+      <p style="margin:8px 0 4px"><b>Plan a feature:</b></p>
+      <pre>#file:spec.md  Plan this.
+List every business rule as a test name.
+Follow the instructions file.
+Ask me about anything ambiguous.
+Out of scope: &lt;the non-goals&gt;.</pre>
+      <p style="margin:8px 0 4px"><b>Independent review (new chat):</b></p>
+      <pre>Review #file:X for security and correctness:
+validation, authorization, race conditions,
+data exposure in errors. Prioritize by
+severity. Don't change code.</pre>
+    </section>
+
+    <section class="card">
+      <h2>Keep the context clean</h2>
+      <ul>
+        <li>One task, one chat. New chat for the next task.</li>
+        <li>Everything is re-sent every turn: quality drops as the window fills.</li>
+        <li>Point at what matters with <code>#file</code>; don't dump the repo in.</li>
+        <li>Watch the token usage indicator; <code>/compact</code> when a session must continue.</li>
+        <li><b>Step back, don't patch forward.</b> Restore the checkpoint and re-prompt precisely.</li>
+        <li class="warn">Checkpoints don't undo terminal commands, migrations or anything external. Git does.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Teach it your project</h2>
+      <ul>
+        <li><code>.github/copilot-instructions.md</code> joins every chat in the repo. <code>/init</code> drafts it; then cut it down.</li>
+        <li>Imperative voice, <b>Do/Don't pairs</b>, one rule per mistake it actually made.</li>
+        <li>Record decisions you've made (architecture, conventions) so it stops re-deciding.</li>
+        <li>Formatting belongs to linters and <code>.editorconfig</code>, not to the instructions file.</li>
+        <li>An outdated instructions file is worse than none.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Review checklist for generated code</h2>
+      <ul>
+        <li>Does it do <b>only</b> what was asked? Delete the rest.</li>
+        <li>Did the domain model change? (<code>init</code> → <code>set</code>, nullability, defaults)</li>
+        <li>Migrations: what happens to existing rows?</li>
+        <li>Concurrency: two requests at the same moment.</li>
+        <li>Authorization: who is allowed to do this?</li>
+        <li>Errors: do they leak anything?</li>
+        <li>Tests: do they assert behaviour, or just run the code?</li>
+        <li>Docs it wrote: true against the code, or plausible fiction?</li>
+      </ul>
+    </section>
+
+    <section class="card wide">
+      <h2>Trust vs challenge</h2>
+      <div class="two-col">
+        <div>
+          <p style="margin:0 0 4px"><b>Trust, then verify</b></p>
+          <ul>
+            <li>Changes proven by tests you have read</li>
+            <li>Boilerplate that follows an existing pattern</li>
+            <li>Explanations you can check against the code</li>
+          </ul>
+        </div>
+        <div>
+          <p style="margin:0 0 4px"><b>Always challenge</b></p>
+          <ul>
+            <li>Domain model changes and migrations</li>
+            <li>Concurrency, authorization, anything security-shaped</li>
+            <li>Anything outside the plan you approved</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card wide">
+      <h2>Seven habits</h2>
+      <ol>
+        <li>Small tasks, one chat each</li>
+        <li>Plan before code</li>
+        <li>Say what's out of scope</li>
+        <li>Step back, don't patch forward</li>
+        <li>Grow the instructions file from real mistakes</li>
+        <li>Commit after every green run; never run an agent on a dirty tree</li>
+        <li>Review with fresh eyes: a new chat, and your own</li>
+      </ol>
+    </section>
+  </div>
+
+  <footer>
+    Never paste secrets or customer data into a prompt. You own every line you merge — an instructions file is guidance, not a security control.
+  </footer>
+</div>
+</body>
+</html>

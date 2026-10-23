@@ -1,15 +1,5 @@
 # Round 2: same app, with context
 
-**Copy this into Copilot.** Open an empty folder called `timesheet-2` in VS Code, start a new chat in **Agent** mode, and send:
-
-```text
-Clone https://github.com/AndreRochaDev/workshop-block-coders into a temporary folder outside this project.
-Copy everything inside coders-2/round-2/starter, including the hidden .github folder, into this folder.
-Delete the temporary clone. Then list the files you created.
-```
-
-The steps below explain each part.
-
 This time Copilot gets three things it didn't have in Round 1:
 
 - an **instructions file** that says *how* we build: `.github/copilot-instructions.md`
@@ -28,7 +18,13 @@ The first two are ready in the [starter](starter/) folder:
 
 1. Create an empty folder called `timesheet-2` and open it in VS Code.
 2. Open a **new chat**, pick **Agent**, and pick the same model as on the presenter's screen.
-3. Send the prompt from the top of this page.
+3. Send this:
+
+   ```text
+   Clone https://github.com/AndreRochaDev/workshop-block-coders into a temporary folder outside this project.
+   Copy everything inside coders-2/round-2/starter, including the hidden .github folder, into this folder.
+   Delete the temporary clone. Then list the files you created.
+   ```
 
 4. Type `/` in the chat box. You should see `grill-me` and `tdd` in the list.
 

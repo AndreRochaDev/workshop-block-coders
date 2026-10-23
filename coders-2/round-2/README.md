@@ -6,40 +6,34 @@ This time Copilot gets three things it didn't have in Round 1:
 - **skills** that say *how* we work: Matt Pocock's `grill-me`, `grilling` and `tdd`
 - a **spec** you write together, which says *what* we build: `SPEC.md`
 
-## 1. Set up (10 min)
+The first two are ready in the [starter](starter/) folder:
+
+| Path | What it is |
+|---|---|
+| `requirements.md` | The same brief as Round 1 |
+| `.github/copilot-instructions.md` | How we build |
+| `.github/skills/` | Matt Pocock's `grill-me`, `grilling` and `tdd` |
+
+## 1. Set up (5 min)
 
 1. Create an empty folder called `timesheet-2` and open it in VS Code.
 2. Open a **new chat**, pick **Agent**, and pick the same model as on the presenter's screen.
 3. Send this:
 
    ```text
-   Download these two files into this folder:
-   - https://raw.githubusercontent.com/AndreRochaDev/workshop-block-coders/main/coders-2/requirements.md as requirements.md
-   - https://raw.githubusercontent.com/AndreRochaDev/workshop-block-coders/main/coders-2/round-2/.github/copilot-instructions.md as .github/copilot-instructions.md
-
-   Then install the grill-me, grilling and tdd skills from https://github.com/mattpocock/skills
-   into .github/skills/. Copy each skill's whole folder. Install nothing else, and don't
-   leave a clone of the repo behind. List the files you created.
+   Copy everything in https://github.com/AndreRochaDev/workshop-block-coders/tree/main/coders-2/round-2/starter
+   into this folder, keeping the folder structure, including the hidden .github folder.
+   Don't leave a clone of the repo behind. Then list the files.
    ```
 
-4. Open `.github/skills/grilling/SKILL.md` and read it. A skill is a text file of instructions that Copilot follows with your permissions, so always read the skills you install.
-5. Type `/` in the chat box. You should see `grill-me` and `tdd` in the list.
+4. Type `/` in the chat box. You should see `grill-me` and `tdd` in the list.
 
-**If the skills didn't install,** send this instead:
+   If they're not there, open the Command Palette (**Ctrl+Shift+P**, or **Cmd+Shift+P** on macOS), run **Developer: Reload Window**, and type `/` again.
+5. Open `.github/skills/grilling/SKILL.md` and read it. A skill is a text file of instructions that Copilot follows with your permissions, so always read the skills you use.
 
-```text
-Copy the grill-me, grilling and tdd folders from
-https://github.com/AndreRochaDev/workshop-block-coders/tree/main/coders-2/round-2/skills-fallback
-into .github/skills/, with every file in each folder.
-```
+**If the copy didn't work:** open [the repo](https://github.com/AndreRochaDev/workshop-block-coders), click **Code → Download ZIP** and unzip it. In VS Code, use **File → Open Folder** to open `coders-2/round-2/starter` itself, and work in that folder instead of `timesheet-2`.
 
-Or run Matt's own installer in the terminal:
-
-```sh
-npx skills@latest add mattpocock/skills --skill grill-me --skill grilling --skill tdd -a github-copilot --copy -y
-```
-
-## 2. Grill (15 min)
+## 2. Grill (20 min)
 
 Open a **new chat**, pick **Agent**, and send:
 
@@ -85,6 +79,17 @@ The same two questions as Round 1:
 - How many hours did the pay cycle that just closed require?
 - How does your app work that out? Point to the line in `SPEC.md` and the test that checks it.
 
+## Take it home
+
+- **The instructions file is a template.** Copy `starter/.github/copilot-instructions.md` into your own repo and rewrite it for your stack and your rules.
+- **Matt Pocock has many more skills** at [mattpocock/skills](https://github.com/mattpocock/skills). To pick the ones you want for a project, run this in its folder:
+
+  ```sh
+  npx skills@latest add mattpocock/skills
+  ```
+
+  His README explains which ones to start with.
+
 ---
 
-The skills in `skills-fallback/` are copied unchanged from [mattpocock/skills](https://github.com/mattpocock/skills) at commit `5beb35b`, under his MIT licence (`skills-fallback/LICENSE`).
+The skills in `starter/.github/skills/` are copied unchanged from [mattpocock/skills](https://github.com/mattpocock/skills) at commit `5beb35b`, under his MIT licence, which is included in each skill's folder.

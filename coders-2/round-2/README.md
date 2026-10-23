@@ -47,6 +47,8 @@ Open a **new chat**, pick **Agent**, and send:
 /grill-me #file:requirements.md Ask me at most 10 questions in total. Start with the ones that change how many hours someone owes.
 ```
 
+If Copilot just answers instead of asking you questions, send the same message again with `/grilling` in place of `/grill-me`.
+
 Answer every question. Reply "yes" to accept Copilot's recommendation, or give your own answer. These are your decisions: there is no right answer, only a written one.
 
 When it's done, send:
@@ -71,6 +73,8 @@ Read `SPEC.md` and fix anything that isn't what you meant.
    ```text
    /tdd Implement this plan, one rule at a time.
    ```
+
+   If Copilot doesn't seem to know about the plan, go back to **Plan**, press **Start implementation**, and then send `/tdd Continue, one rule at a time.`
 
 4. When the tests pass, run `node server.js` in the terminal and open http://localhost:3000.
 
